@@ -11,7 +11,7 @@ resource "ibm_resource_instance" "kp_instance" {
   location = "us-south"
 }
 resource "ibm_kp_key" "test" {
-  key_protect_id = ibm_resource_instance.kp_instance.guid
+  key_protect_id = "${ibm_resource_instance.kp_instance.guid}"
   key_name       = "${var.key_name}"
   standard_key   = false
 }
@@ -25,8 +25,8 @@ resource "ibm_iam_authorization_policy" "policy" {
 resource "ibm_cos_bucket" "flex-us-south" {
   depends_on           = [ibm_iam_authorization_policy.policy]
   bucket_name          = "abuck4"
-  resource_instance_id = ibm_resource_instance.cos_instance.id
+  resource_instance_id = "${ibm_resource_instance.cos_instance.id}"
   region_location      = "us-south"
   storage_class        = "flex"
-  key_protect          = ibm_kp_key.test.id
+  key_protect          = "${ibm_kp_key.test.id}"
 }
