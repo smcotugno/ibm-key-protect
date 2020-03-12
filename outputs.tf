@@ -1,4 +1,4 @@
 
 output "keyValue" {
-  value = data.ibm_kp_key.test.keys.*
+  value = "${data.ibm_kp_key.test.keys.*}"
 }
