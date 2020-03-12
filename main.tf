@@ -1,18 +1,18 @@
 resource "ibm_resource_instance" "cos_instance" {
-  name     = "${var.cos_name}
+  name     = "${var.cos_name}"
   service  = "cloud-object-storage"
-  plan     = ${var.pln}
-  location = ${var.location}
+  plan     = "${var.pln}"
+  location = "${var.location}"
 }
 resource "ibm_resource_instance" "kp_instance" {
-  name     = ${var.kp_name}
+  name     = "${var.kp_name}"
   service  = "kms"
   plan     = "tiered-pricing"
   location = "us-south"
 }
 resource "ibm_kp_key" "test" {
   key_protect_id = ibm_resource_instance.kp_instance.guid
-  key_name       = ${var.key_name}
+  key_name       = "${var.key_name}"
   standard_key   = false
 }
 
