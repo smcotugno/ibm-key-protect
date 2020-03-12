@@ -23,7 +23,7 @@ resource "ibm_iam_authorization_policy" "policy" {
 }
 
 resource "ibm_cos_bucket" "flex-us-south" {
-  depends_on           = [ibm_iam_authorization_policy.policy]
+  depends_on           = ["ibm_iam_authorization_policy.policy"]
   bucket_name          = "abuck4"
   resource_instance_id = "${ibm_resource_instance.cos_instance.id}"
   region_location      = "us-south"
