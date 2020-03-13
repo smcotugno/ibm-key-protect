@@ -1,12 +1,14 @@
 variable "pln" {
   default = "standard"
+  description = "Cloud Object Storage Service Plan"
 }
 variable "location" {
   default = "global"
+  description = "Cloud Object Storage Service Location"
 }
 variable "cos_name" {
   default = "test_cos"
-  description = "Cloud Object Storage Service"
+  description = "Cloud Object Storage Service Name"
 }
 variable "bucket_name" {
   default = "abuck4"
