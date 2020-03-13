@@ -1,3 +1,9 @@
+#
+# Terraform Provider Doc: https://cloud.ibm.com/docs/terraform?topic=terraform-tf-provider
+# Key Protect Service (kms): https://cloud.ibm.com/catalog/services/key-protect#about
+# Cloud Object Storage Service: https://cloud.ibm.com/catalog/services/cloud-object-storage
+#
+
 resource "ibm_resource_instance" "cos_instance" {
   name     = "${var.cos_name}"
   service  = "cloud-object-storage"
@@ -24,7 +30,7 @@ resource "ibm_iam_authorization_policy" "policy" {
 
 resource "ibm_cos_bucket" "flex-us-south" {
   depends_on           = ["ibm_iam_authorization_policy.policy"]
-  bucket_name          = "abuck4"
+  bucket_name          = "${var.bucket_name}"
   resource_instance_id = "${ibm_resource_instance.cos_instance.id}"
   region_location      = "us-south"
   storage_class        = "flex"
